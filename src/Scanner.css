@@ -1,0 +1,47 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .input-container {
+    margin-bottom: 20px;
+  }
+  
+  .text-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .display-texts {
+    margin-bottom: 20px;
+  }
+  
+  .display-text {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .fetched-type {
+    margin-bottom: 20px;
+  }
+  
+  .delete-button,
+  .export-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .export-button {
+    background-color: #4caf50;
+  }
+  
