@@ -6,7 +6,8 @@ const Scanner = () => {
   const [inputValue, setInputValue] = useState('');
   const [displayTexts, setDisplayTexts] = useState([]);
   const [fetchedData, setFetchedData] = useState(null); 
-  const [type, setType] = useState(''); // New state to store the fetched type
+  const [type, setType] = useState('');
+  const [selectedSituation, setSelectedSituation] = useState('');
 
   useEffect(() => {
     const storedTexts = localStorage.getItem('displayTexts');
@@ -33,9 +34,9 @@ const Scanner = () => {
       setDisplayTexts((prevDisplayTexts) => [enteredText, ...prevDisplayTexts]);
       setInputValue(''); 
       localStorage.setItem('displayTexts', JSON.stringify([enteredText, ...displayTexts]));
-  
+
       console.log('Fetching data for ID:', inputValue);
-  
+
       // Axios GET request
       try {
         const response = await axios.get('https://api.airtable.com/v0/apphuBNpFBRqJcHbR/Info', {
@@ -43,10 +44,10 @@ const Scanner = () => {
             Authorization: 'Bearer patblyKBhtPzNkG8c.2347c7c2a4f953e0484263f703ae9e69645bb4205e3fdc19b90135024414627c'
           }
         });
-      
+
         const filteredRecords = response.data.records.filter(record => record.fields.ID === inputValue);
         console.log('Filtered Records:', filteredRecords);
-      
+
         if (filteredRecords.length > 0) {
           const fetchedType = filteredRecords[0].fields.type;
           console.log('Type:', fetchedType); // Output the type
@@ -77,10 +78,26 @@ const Scanner = () => {
     link.click();
   };
 
+  const handleSituationChange = (event) => {
+    setSelectedSituation(event.target.value);
+  };
+
   return (
     <div className="container">
+      <div className="situation-dropdown">
+        <select value={selectedSituation} onChange={handleSituationChange}>
+          <option value="">Select Situation</option>
+          <option value="Cocktail Reception">Cocktail Reception</option>
+          <option value="Full Day Conference">Full Day Conference</option>
+          <option value="Gala Dinner">Gala Dinner</option>
+          <option value="Technical Visit">Technical Visit</option>
+        </select>
+      </div>
       {type && (
-        <div className="fetched-type" style={{ color: type === 'WUWM Member' || type === 'Non member' || type === 'Accompanying person' ? 'green' : 'red' }}>
+        <div className="fetched-type" style={{ color: (selectedSituation === 'Cocktail Reception' && (type === 'WUWM Member' || type === 'Non member' || type === 'Accompanying person')) ||
+                                                     (selectedSituation === 'Full Day Conference' && (type === 'WUWM Member' || type === 'Non member' || type === 'TAWMA'  || type === 'Thai attendee')) ||
+                                                     (selectedSituation === 'Gala Dinner' && (type === 'WUWM Member' || type === 'Non member' || type === 'TAWMA'  || type === 'Accompanying person')) ||
+                                                     (selectedSituation === 'Technical Visit' && (type === 'WUWM Member' || type === 'Non member')) ? 'green' : 'red' }}>
           <h1>{type}</h1>
         </div>
       )}

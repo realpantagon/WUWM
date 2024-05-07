@@ -2,7 +2,6 @@ import React from 'react';
 import SearchAirtable from './SearchAirtable';
 import Scanner from './Scanner';
 import AirtableSearch from './Airtablesearch';
-import Logrecord from './log';
 
 function App() {
   return (
