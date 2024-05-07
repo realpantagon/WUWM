@@ -36,7 +36,7 @@ const Scanner = () => {
   
       // Axios GET request
       try {
-        const response = await axios.get('https://api.airtable.com/v0/apphuBNpFBRqJcHbR/%F0%9F%9B%91Info?maxRecords=3&view=Grid%20view', {
+        const response = await axios.get('https://api.airtable.com/v0/apphuBNpFBRqJcHbR/%F0%9F%9B%91Info', {
           headers: {
             Authorization: 'Bearer patblyKBhtPzNkG8c.6c99ac973101d6e188dbc6025c6f92044704335a1d7d156c9543fe01657902ea'
           }
