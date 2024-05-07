@@ -2,6 +2,7 @@
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    font-family: 'Kanit', sans-serif;
   }
   
   .input-container {
@@ -9,7 +10,7 @@
   }
   
   .text-input {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     font-size: 16px;
   }
@@ -43,5 +44,36 @@
   
   .export-button {
     background-color: #4caf50;
+  }
+  
+  /* Dropdown styles */
+  .situation-dropdown {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .situation-dropdown select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none; /* Remove default dropdown arrow */
+    cursor: pointer;
+  }
+  
+  .situation-dropdown select::-ms-expand {
+    display: none; /* Hide default arrow in IE */
+  }
+  
+  .situation-dropdown select option {
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .type {
+    text-align: center; /* Center align the text */
+    font-size: 140px; /* Increase font size */
   }
   

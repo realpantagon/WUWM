@@ -30,13 +30,10 @@ const Scanner = () => {
   const handleKeyDown = async (event) => {
     if (event.key === 'Enter') {
       const currentTime = getCurrentDateTime();
-      const enteredText = `${inputValue}   ${currentTime}`;
-      setDisplayTexts((prevDisplayTexts) => [enteredText, ...prevDisplayTexts]);
-      setInputValue(''); 
-      localStorage.setItem('displayTexts', JSON.stringify([enteredText, ...displayTexts]));
-
+      let enteredText = `${inputValue}   ${currentTime}`;
+  
       console.log('Fetching data for ID:', inputValue);
-
+  
       // Axios GET request
       try {
         const response = await axios.get('https://api.airtable.com/v0/apphuBNpFBRqJcHbR/Info', {
@@ -44,14 +41,17 @@ const Scanner = () => {
             Authorization: 'Bearer patblyKBhtPzNkG8c.2347c7c2a4f953e0484263f703ae9e69645bb4205e3fdc19b90135024414627c'
           }
         });
-
+  
         const filteredRecords = response.data.records.filter(record => record.fields.ID === inputValue);
         console.log('Filtered Records:', filteredRecords);
-
+  
         if (filteredRecords.length > 0) {
           const fetchedType = filteredRecords[0].fields.type;
+          const fname = filteredRecords[0].fields.Fname;
+          const lname = filteredRecords[0].fields.Lname;
           console.log('Type:', fetchedType); // Output the type
           setType(fetchedType); // Update the state with the fetched type
+          enteredText += `  ${fname} ${lname} ${selectedSituation} ${fetchedType} `; // Append Fname, Lname, Type, and selectedSituation
         } else {
           console.log('No matching record found.');
           // Handle case where no matching record is found
@@ -60,8 +60,14 @@ const Scanner = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
+  
+      setDisplayTexts((prevDisplayTexts) => [enteredText, ...prevDisplayTexts]);
+      setInputValue(''); 
+      localStorage.setItem('displayTexts', JSON.stringify([enteredText, ...displayTexts]));
     }
   };
+  
+  
 
   const handleDeleteAll = () => {
     setDisplayTexts([]);
@@ -98,7 +104,7 @@ const Scanner = () => {
                                                      (selectedSituation === 'Full Day Conference' && (type === 'WUWM Member' || type === 'Non member' || type === 'TAWMA'  || type === 'Thai attendee')) ||
                                                      (selectedSituation === 'Gala Dinner' && (type === 'WUWM Member' || type === 'Non member' || type === 'TAWMA'  || type === 'Accompanying person')) ||
                                                      (selectedSituation === 'Technical Visit' && (type === 'WUWM Member' || type === 'Non member')) ? 'green' : 'red' }}>
-          <h1>{type}</h1>
+          <h1 className='type'>{type}</h1>
         </div>
       )}
       <div className="input-container">
