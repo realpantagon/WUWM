@@ -5,7 +5,7 @@ import AirtableSearch from './Airtablesearch';
 
 function App() {
   return (
-    <div>
+    <div className=''>
       {/* <h1>Airtable Search</h1> */}
       {/* <SearchAirtable /> */}
       <Scanner/>

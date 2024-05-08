@@ -99,6 +99,9 @@ const Scanner = () => {
           <option value="Technical Visit">Technical Visit</option>
         </select>
       </div>
+      <div className="splitblock">
+      <div className='block1'>
+        <img src='src/pics/160pxsize.png' width="150px" height="150px"></img>
       {type && (
         <div className="fetched-type" style={{ color: (selectedSituation === 'Cocktail Reception' && (type === 'WUWM Member' || type === 'Non member' || type === 'Accompanying person')) ||
                                                      (selectedSituation === 'Full Day Conference' && (type === 'WUWM Member' || type === 'Non member' || type === 'TAWMA'  || type === 'Thai attendee')) ||
@@ -107,6 +110,8 @@ const Scanner = () => {
           <h1>{type}</h1>
         </div>
       )}
+      </div>
+      <div className='block2'>
       <div className="input-container">
         <input
           className="text-input"
@@ -122,9 +127,14 @@ const Scanner = () => {
           <p className="display-text" key={index}>{text}</p>
         ))}
       </div>
+      </div>
+      </div>
+      <div className='button'>
       <button className="delete-button" onClick={handleDeleteAll}>Delete All Messages</button>
       <button className="export-button" onClick={exportToCSV}>Export as CSV</button>
+      </div>
     </div>
+    
   );
 };
 
