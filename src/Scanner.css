@@ -7,6 +7,7 @@
   
   .input-container {
     margin-bottom: 20px;
+    margin-right: 20px;
   }
   
   .text-input {
@@ -31,6 +32,7 @@
   }
   
   .fetched-type {
+    margin-top: 50px;
     margin-bottom: 20px;
   }
   
@@ -103,7 +105,7 @@
   .block2{
     width: 25%;
     height: 460px;
-    background-color: #00a651;
+    background-color: #00a650;
     padding: 50px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
