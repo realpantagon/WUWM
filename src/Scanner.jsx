@@ -101,7 +101,7 @@ const Scanner = () => {
       </div>
       <div className="splitblock">
       <div className='block1'>
-        <img src='src/pics/160pxsize.png' width="150px" height="150px"></img>
+        <img src='IN2IT-Logo.png' width="290px" height="150px"></img>
       {type && (
         <div className="fetched-type" style={{ color: (selectedSituation === 'Cocktail Reception' && (type === 'WUWM Member' || type === 'Non member' || type === 'Accompanying person')) ||
                                                      (selectedSituation === 'Full Day Conference' && (type === 'WUWM Member' || type === 'Non member' || type === 'TAWMA'  || type === 'Thai attendee')) ||
